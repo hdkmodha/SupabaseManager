@@ -23,7 +23,7 @@ public actor SupabaseManager {
         self.client = SupabaseClient(supabaseURL: supabaseURL, supabaseKey: supabaseKey)
     }
     
-    public func getClient() -> SupabaseClient? {
+    public func getClient() async -> SupabaseClient? {
         guard let client = self.client else { return nil }
         return client
     }
