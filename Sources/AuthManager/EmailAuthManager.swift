@@ -53,6 +53,18 @@ public actor EmailAuthManager {
             self.session = session
             return true
         } catch {
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    public func signOut() async -> Bool {
+        guard let client = await self.getClient() else { return  false }
+        do {
+            try await client.auth.signOut()
+            return true
+        } catch {
+            print(error.localizedDescription)
             return false
         }
     }
